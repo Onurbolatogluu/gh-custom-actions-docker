@@ -9,7 +9,9 @@ outputs:
     used-cache:
       description: 'Whether the cache was used'
       value: ${{ steps.install.outputs.cache }}
-
+    used-cache2:
+      description: 'Whether the cache was used'
+      value: ${{ steps.out.outputs.cache }} 
 
 runs:
   using: composite
@@ -23,7 +25,7 @@ runs:
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
 
     - name: Set output
-      id: install
+      id: out
       if: inputs.caching == 'true'
       run: echo "cache='${{ inputs.caching }}'" >> $GITHUB_OUTPUT
       shell: bash
