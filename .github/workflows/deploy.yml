@@ -81,6 +81,8 @@ jobs:
     runs-on: ubuntu-latest
     name: We test it locally with act
     steps:
+      - name: Get code
+        uses: actions/checkout@v3
       - name: Get Pokemon name
         uses: ./.github/actions/docker-actions
         id: pokemon
