@@ -68,7 +68,7 @@ jobs:
       - name: Deploy site
         run: echo "Deploying..."
 
-  print:
+  javascript_test:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -76,3 +76,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Print Hello World !
         uses: ./.github/actions/javascript-actions
+
+  docker_test:
+    runs-on: ubuntu-latest
+    name: We test it locally with act
+    steps:
+      - name: Get Pokemon name
+        uses: ./.github/actions/docker-actions
+        id: pokemon
+        with:
+          pokemon_id: 150
+      - name: Get the pokemon
+        run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
