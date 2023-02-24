@@ -87,6 +87,6 @@ jobs:
         uses: ./.github/actions/docker-actions
         id: pokemon
         with:
-          pokemon_id: 150
+          pokemon_id: 12
       - name: Get the pokemon
         run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
